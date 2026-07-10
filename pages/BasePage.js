@@ -9,6 +9,11 @@ export class BasePage {
     }
 
     async goto(url = "/") {
+
+        if (!process.env.BASE_URL) {
+            throw new Error("BASE_URL is not defined");
+        }
+
         await this.page.goto(url);
     }
 
